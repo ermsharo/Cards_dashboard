@@ -20,11 +20,19 @@ function App() {
       errorElement: <ErrorPage />,
     },
     {
-      path: "/projects",
+      path: "/deleted",
       element: <Projects />,
     },
     {
-      path: "/project/:slug",
+      path: "/revision",
+      element: <Project />,
+    },
+    {
+      path: "/done",
+      element: <Project />,
+    },
+    {
+      path: "/validate",
       element: <Project />,
     },
   ]);

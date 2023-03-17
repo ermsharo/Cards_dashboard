@@ -11,6 +11,7 @@
     "emailjs-com": "^3.2.0",
     "flickity": "^2.3.0",
     "html-react-parser": "^3.0.12",
+    "html-to-image": "^1.11.11",
     "notion-client": "^6.16.0",
     "nuka-carousel": "^5.4.1",
     "react": "^18.2.0",

@@ -14,8 +14,8 @@ export const HeaderBox = styled.div`
   gap: 2.5rem;
   z-index: 4;
   position: fixed;
-  width: calc(100% - 2rem);
-  padding: 1rem;
+  width: calc(100% - 3rem);
+  padding: 1.5rem;
 `;
 
 const ButtonBox = styled.div`
@@ -42,10 +42,11 @@ const HeaderOptionObj = (name: string, hash: string) => {
 };
 
 const HeaderOptions = [
-  HeaderOptionObj("Home", "banner_home"),
-  HeaderOptionObj("About", "about_me_home"),
-  HeaderOptionObj("Projects", "projects_home"),
-  HeaderOptionObj("Contact", "contact_home"),
+  HeaderOptionObj("New cards", "banner_home"),
+  HeaderOptionObj("Waiting cards", "about_me_home"),
+  HeaderOptionObj("Done cards", "projects_home"),
+  HeaderOptionObj("General status", "contact_home"),
+  HeaderOptionObj("ranking cards", "contact_home"),
 ];
 
 function Header() {
@@ -62,10 +63,6 @@ function Header() {
           );
         })}
       </OptionsBox>
-
-      <ButtonBox>
-        <Button>Download CV</Button>
-      </ButtonBox>
     </HeaderBox>
   );
 }
