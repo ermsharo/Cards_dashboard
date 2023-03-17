@@ -1,0 +1,440 @@
+[
+    {
+        "id": 16,
+        "date": "2023-02-28T10:32:17",
+        "date_gmt": "2023-02-28T10:32:17",
+        "guid": {
+            "rendered": "http:\/\/portfolio.local\/?p=16"
+        },
+        "modified": "2023-03-02T12:09:17",
+        "modified_gmt": "2023-03-02T12:09:17",
+        "slug": "mix-text-app",
+        "status": "publish",
+        "type": "post",
+        "link": "http:\/\/portfolio.local\/mix-text-app\/",
+        "title": {
+            "rendered": "Mix Text app"
+        },
+        "content": {
+            "rendered": "\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat id ante et egestas. Donec a lacinia tellus. Proin non aliquet velit. Duis velit magna, tempus nec tempor ac, consectetur nec quam. Ut quis lorem arcu. Duis dolor dolor, varius id risus bibendum, porta consectetur metus. Donec pretium ut purus sit amet rutrum. Quisque at massa quis metus maximus congue. Fusce mollis dolor id viverra consectetur. Mauris id felis nec nisi luctus convallis in vel odio. Sed sed pulvinar velit. Duis eget fermentum nisi. Aliquam scelerisque ut dolor sit amet ultricies. Integer eu nibh dictum, dignissim dolor ut, aliquet nisl. Nulla feugiat nunc nec faucibus gravida. In nec dignissim nibh.<\/p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat id ante et egestas. Donec a lacinia tellus. Proin non aliquet velit. Duis velit magna, tempus nec tempor ac, consectetur nec quam. Ut quis lorem arcu. Duis dolor dolor, varius id risus bibendum, porta consectetur metus. Donec pretium ut purus sit amet rutrum. Quisque at [&hellip;]<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 37,
+        "comment_status": "open",
+        "ping_status": "open",
+        "sticky": false,
+        "template": "",
+        "format": "standard",
+        "meta": [],
+        "categories": [
+            1
+        ],
+        "tags": [],
+        "acf": {
+            "small_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "tags": "REACT, NODE, TYPESCRIPT",
+            "productionlink": "https:\/\/br.lipsum.com\/feed\/html",
+            "coverimage": "https:\/\/external-content.duckduckgo.com\/iu\/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.49CH_m8xcY3b6stGkMkG2AHaEO%26pid%3DApi&f=1&ipt=ca8a81c2916fbaa3b82f440b2a2fae9fff94689c552b0994ddc9d44248517482&ipo=images"
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts\/16"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/types\/post"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/comments?post=16"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 5,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts\/16\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 41,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts\/16\/revisions\/41"
+                }
+            ],
+            "wp:featuredmedia": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/media\/37"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/media?parent=16"
+                }
+            ],
+            "wp:term": [
+                {
+                    "taxonomy": "category",
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/categories?post=16"
+                },
+                {
+                    "taxonomy": "post_tag",
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/tags?post=16"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    },
+    {
+        "id": 14,
+        "date": "2023-02-01T14:13:09",
+        "date_gmt": "2023-02-01T14:13:09",
+        "guid": {
+            "rendered": "http:\/\/portfolio.local\/?p=14"
+        },
+        "modified": "2023-03-02T12:09:36",
+        "modified_gmt": "2023-03-02T12:09:36",
+        "slug": "kamban",
+        "status": "publish",
+        "type": "post",
+        "link": "http:\/\/portfolio.local\/kamban\/",
+        "title": {
+            "rendered": "Kamban"
+        },
+        "content": {
+            "rendered": "",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "sticky": false,
+        "template": "",
+        "format": "standard",
+        "meta": [],
+        "categories": [
+            1
+        ],
+        "tags": [],
+        "acf": {
+            "small_description": "",
+            "tags": "",
+            "productionlink": "",
+            "coverimage": "https:\/\/external-content.duckduckgo.com\/iu\/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.PJYvBdUL-kd8wITM9bGdQwHaEo%26pid%3DApi&f=1&ipt=87b7fb3e0cefaa987db944ca0cf8635357fecb78adda8bd2320fc136c18651fa&ipo=images"
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts\/14"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/types\/post"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/comments?post=14"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 2,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts\/14\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 42,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts\/14\/revisions\/42"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/media?parent=14"
+                }
+            ],
+            "wp:term": [
+                {
+                    "taxonomy": "category",
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/categories?post=14"
+                },
+                {
+                    "taxonomy": "post_tag",
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/tags?post=14"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    },
+    {
+        "id": 12,
+        "date": "2023-02-01T14:12:58",
+        "date_gmt": "2023-02-01T14:12:58",
+        "guid": {
+            "rendered": "http:\/\/portfolio.local\/?p=12"
+        },
+        "modified": "2023-03-02T12:09:47",
+        "modified_gmt": "2023-03-02T12:09:47",
+        "slug": "calendar-app",
+        "status": "publish",
+        "type": "post",
+        "link": "http:\/\/portfolio.local\/calendar-app\/",
+        "title": {
+            "rendered": "Calendar"
+        },
+        "content": {
+            "rendered": "",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "sticky": false,
+        "template": "",
+        "format": "standard",
+        "meta": [],
+        "categories": [
+            1
+        ],
+        "tags": [],
+        "acf": {
+            "small_description": "Fullstack calendar app in react",
+            "tags": "React , Node, Express",
+            "productionlink": "",
+            "coverimage": "https:\/\/external-content.duckduckgo.com\/iu\/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.Vx9v-Ao1rqVtCd21zrw88gHaE8%26pid%3DApi&f=1&ipt=e82ab107fd805b5e7dfa29c02b6e2cffae1fb49f926d35026cb9c8ac67b58ae2&ipo=images"
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts\/12"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/types\/post"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/comments?post=12"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 6,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts\/12\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 43,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts\/12\/revisions\/43"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/media?parent=12"
+                }
+            ],
+            "wp:term": [
+                {
+                    "taxonomy": "category",
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/categories?post=12"
+                },
+                {
+                    "taxonomy": "post_tag",
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/tags?post=12"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    },
+    {
+        "id": 8,
+        "date": "2023-02-01T14:12:40",
+        "date_gmt": "2023-02-01T14:12:40",
+        "guid": {
+            "rendered": "http:\/\/portfolio.local\/?p=8"
+        },
+        "modified": "2023-03-02T12:10:05",
+        "modified_gmt": "2023-03-02T12:10:05",
+        "slug": "language-app",
+        "status": "publish",
+        "type": "post",
+        "link": "http:\/\/portfolio.local\/language-app\/",
+        "title": {
+            "rendered": "Language app"
+        },
+        "content": {
+            "rendered": "\n<p>asdasdasdasd<\/p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>asdasdasdasd<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "sticky": false,
+        "template": "",
+        "format": "standard",
+        "meta": [],
+        "categories": [
+            1
+        ],
+        "tags": [],
+        "acf": {
+            "small_description": "",
+            "tags": "",
+            "productionlink": "",
+            "coverimage": "https:\/\/external-content.duckduckgo.com\/iu\/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.Np6bbNsQ6FK_xnEkeBQyUwEsDh%26pid%3DApi&f=1&ipt=0c5bfaf5b1bbf9536ddc5b2b1ac99fba86f22ab4bda2e079076050b66343f89c&ipo=images"
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts\/8"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/types\/post"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/comments?post=8"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 3,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts\/8\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 44,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/posts\/8\/revisions\/44"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/media?parent=8"
+                }
+            ],
+            "wp:term": [
+                {
+                    "taxonomy": "category",
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/categories?post=8"
+                },
+                {
+                    "taxonomy": "post_tag",
+                    "embeddable": true,
+                    "href": "http:\/\/portfolio.local\/wp-json\/wp\/v2\/tags?post=8"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    }
+]
