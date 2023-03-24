@@ -18,7 +18,7 @@ const IndicatorButton = styled.div`
  flex-direction: column; 
  justify-content: center;
  width:4rem; 
- border:2px solid red; 
+
 `;
 
 

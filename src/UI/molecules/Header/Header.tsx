@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Button } from "../../../styles/generalStyles";
 import { Colors } from "./../../../styles/defaultProps";
 import NavigationLink from "../../atoms/NavigationLink";
 export interface HeaderProps {}
@@ -18,11 +17,6 @@ export const HeaderBox = styled.div`
   padding: 1.5rem;
 `;
 
-const ButtonBox = styled.div`
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-`;
 const OptionsBox = styled.div`
   width: 100%;
   display: flex;
@@ -38,7 +32,7 @@ const Option = styled.div`
 `;
 
 const HeaderOptionObj = (name: string, hash: string) => {
-  return { name: name, to: `#${hash}` };
+  return { name: name, to: `${hash}` };
 };
 
 const HeaderOptions = [

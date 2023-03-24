@@ -1,6 +1,5 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
-import * as htmlToImage from "html-to-image";
 const CardName = styled.div`
   background-color: white;
   color: black;
@@ -69,7 +68,7 @@ const DescriptionType = styled.div`
   padding: 0.5%;
 `;
 
-const CardAtributes = styled.div`
+const CardAttributes = styled.div`
   padding: 0.6%;
 
   text-align: right;
@@ -85,16 +84,8 @@ export interface CardProps {
   def: string;
 }
 
-function Card({ name, image, type, description, atk, def }: CardProps) {
+function Card({ name, type, description, atk, def }: CardProps) {
   const domEl = React.useRef<HTMLDivElement>(null);
-  const downloadImage = async () => {
-    // const dataUrl = await htmlToImage.toPng(domEl.current);
-    // // download image
-    // const link = document.createElement("a");
-    // link.download = `${name}.png`;
-    // link.href = dataUrl;
-    // link.click();
-  };
   return (
     <div>
 
@@ -119,12 +110,12 @@ function Card({ name, image, type, description, atk, def }: CardProps) {
               </div>
               <div>{description}</div>
             </DescriptionText>
-            <CardAtributes>
+            <CardAttributes>
               {" "}
               <strong>
                 Atk:{atk}/Def:{def}
               </strong>
-            </CardAtributes>
+            </CardAttributes>
           </Description>
         </CardStruct>
       </DownloadRef>
