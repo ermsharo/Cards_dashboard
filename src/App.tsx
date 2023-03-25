@@ -4,8 +4,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
 import Footer from "./UI/molecules/Footer";
-
-import Project from "./pages/Project";
 import styled from "styled-components";
 
 const ProjectPage = styled.div`
@@ -33,7 +31,7 @@ function App() {
     },
     {
       path: "/validate",
-      element: <Project />,
+      element: <Home />,
     },
   ]);
 
