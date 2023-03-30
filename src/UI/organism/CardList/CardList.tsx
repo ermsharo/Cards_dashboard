@@ -1,65 +1,34 @@
 import React from "react";
 import styled from "styled-components";
+import { CardsRequests } from "../../../services/CardsRequests";
 
 import Card from "../../molecules/Card";
 
 const DisplayPage = styled.div`
   display: grid;
-  width: 70vw;
-  margin: auto;
-  grid-template-columns: 40% 65%;
-  padding-top: 6rem;
+
+  grid-template-columns: 1fr ;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
 `;
 const Page = styled.div`
-display :flex; 
-`;
-const IndicatorButton = styled.div`
- display: flex; 
- flex-direction: column; 
- justify-content: center;
- width:4rem; 
-
+  padding-top: 6rem;
+  width: 60vw;
+  margin: auto;
 `;
 
+const DisplayCard = styled.div`
 
-
-const ButtonBox = styled.div`
- display: flex; 
- flex-direction: column;
-
- justify-content: center ;
- gap : 1rem; 
- padding: 2rem;
- font-size:1.5rem;
+  width: 35%;
+  margin: auto;
 `;
 
-const ButtonList = styled.div`
- display: flex; 
- flex-direction: column;
-
- justify-content: space-between;
- gap : 1rem; 
- padding: 2rem;
- font-size:1.5rem;
+const PageTitle = styled.div`
+  font-size: 2rem;
+  padding: 1rem;
 `;
+
 export interface CardListProps {}
-
-let defaultObj = {
-  NAME: "Boots of Speedful Haste",
-  DESCRIPTION:
-    "These magical boots allow the wearer to move with incredible speed.",
-  CLASS: "Equipment",
-  EFFECT: "The wearer gains a +2 bonus to their movement speed.",
-  VISUAL_DESCRIPTION:
-    "The boots are made of a deep brown leather and have a silver buckle. They have a magical aura that glows a bright blue when in use.",
-  ATK: "8",
-  DEF: "4",
-  TYPE: "Common",
-  IA_MODEL: "text-davinci-003",
-  CATEGORY: "defense_item",
-  BAD_IMAGE: [],
-  GOOD_IMAGE: [],
-};
 
 export const Button = styled.button`
   background: none;
@@ -82,34 +51,70 @@ export const Button = styled.button`
   }
 `;
 
-function CardList({}: CardListProps) {
-  return (
-    <Page>
-        <IndicatorButton></IndicatorButton>
-<DisplayPage>
-      <div>
-        <Card
-          name={defaultObj.NAME}
-          image={defaultObj.BAD_IMAGE}
-          type={defaultObj.TYPE}
-          description={defaultObj.DESCRIPTION}
-          atk={defaultObj.ATK}
-          def={defaultObj.DEF}
-        />
-      </div>
-      <ButtonBox>
-        <ButtonList>
-        <Button>Send to waiting list</Button>
-        <Button>Delete card</Button>
-        
-        </ButtonList>
+export const IconButtonLine = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  padding: 0.5em;
+  gap: 1em;
+`;
+export const IconButton = styled.button`
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: darkblue;
+  color: white;
+  width: calc(100%);
+  height: 3rem;
+  margin: auto;
 
-      </ButtonBox>
-    </DisplayPage>
-    <IndicatorButton></IndicatorButton>
-    </Page>
-    
-  );
+  margin-bottom: 2rem;
+  &:hover {
+  }
+`;
+
+function CardList({}: CardListProps) {
+  const [data, error, loading] = CardsRequests();
+
+  if (error) {
+    return <div>error</div>;
+  }
+  if (data["new_card"] !== undefined) {
+    const { NAME, BAD_IMAGE, TYPE, VISUAL_DESCRIPTION, DESCRIPTION, ATK, DEF } =
+      data["new_card"];
+
+    return (
+      <Page>
+        <PageTitle>New cards</PageTitle>
+        <DisplayPage>
+          <DisplayCard>
+            <Card
+              name={NAME}
+              image={BAD_IMAGE}
+              type={TYPE}
+              visualDescription={VISUAL_DESCRIPTION}
+              description={DESCRIPTION}
+              atk={ATK}
+              def={DEF}
+            />
+            <IconButtonLine>
+              <IconButton>Save</IconButton>
+              <IconButton>Delete</IconButton>
+            </IconButtonLine>
+          </DisplayCard>
+        </DisplayPage>
+      </Page>
+    );
+  }
+
+  return <div>loading</div>;
 }
 
 export default CardList;

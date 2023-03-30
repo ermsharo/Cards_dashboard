@@ -3,8 +3,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-
-
 export const CardsRequests = () => {
   const [data, setData] = useState<any>([]);
   const [error, setError] = useState<boolean | String>(false);
@@ -15,10 +13,11 @@ export const CardsRequests = () => {
     setError(false);
     try {
       const response = await axios.get<any>(
-        `http://portfolio.local/wp-json/wp/v2/posts`
+        `http://localhost:5000/TCG/new`
       );
 
       setData(response.data);
+      console.log(response.data);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error("Axios Error with Message: " + error.message);

@@ -5,17 +5,16 @@ const CardName = styled.div`
   color: black;
   font-family: "Yeseva One", cursive;
   font-weight: bold;
-  font-size: 1.5rem;
-  line-height: 3.5rem;
+  font-size: 0.8em;
+  padding: 0.5em;
   text-align: center;
-  border-radius: 15px;
+  border-radius: 0.5em;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  border: 0.5rem solid black;
-  margin-bottom: calc(46vw * 0.02);
+  border: 0.2em solid black;
   text-overflow: ellipsis;
-
+  margin-bottom: 0.7em;
   background-color: #d3c390;
   background-image: url("https://i.ibb.co/HYYS0fF/noise-hex-d3c390-t50-t-S7-b-W0-m-B-mu1-5-st5-7064a5e0643fb4eb360f3e1edcb15ed9.png");
 `;
@@ -24,9 +23,10 @@ const CardStruct = styled.div`
   background-color: #e1b75b;
   padding: 5%;
   background-image: url("https://i.ibb.co/r34cCD8/noise-hex-e1b75b-t50-t-S7-b-W0-m-B-mu1-5-st5-ffbdccc6aabd22eba1abbb61200e511e.png");
-  border-radius: 2rem;
-  border: 1rem solid black;
+  border-radius: 7.5%;
+  border: 0.5vw solid black;
   color: black;
+  font-size: 1.5vw;
   aspect-ratio: 3/4;
 `;
 
@@ -35,7 +35,7 @@ const CardImage = styled.div`
 
   margin: auto;
   img {
-    border-radius: 1rem 1rem 0px 0px;
+    border-radius: 1em 1em 0px 0px;
     width: 100%;
     height: 100%;
   }
@@ -45,9 +45,9 @@ const Description = styled.div`
   background-color: #d7d4ca;
   width: 88%;
   margin: auto;
-  margin-top: -0.6vw;
+  margin-top: -0.6em;
   background-image: url("https://i.postimg.cc/Prwt8nTK/noise-hex-d7d4ca-t50-t-S7-b-W0-m-B-mu1-5-st5-35d14bf23c1fd498fb8f7716d9fdaf04.png");
-
+  font-size: 0.6em;
   border-radius: 0px 0px 10px 10px;
   padding: 2%;
 
@@ -77,29 +77,34 @@ const CardAttributes = styled.div`
 const DownloadRef = styled.div``;
 export interface CardProps {
   name: string;
-  image: string[];
+  image: string;
   type: string;
   description: string;
+  visualDescription: string;
+
   atk: string;
   def: string;
 }
 
-function Card({ name, type, description, atk, def }: CardProps) {
+function Card({
+  name,
+  type,
+  image,
+  description,
+  visualDescription,
+  atk,
+  def,
+}: CardProps) {
   const domEl = React.useRef<HTMLDivElement>(null);
   return (
     <div>
-
-
       <DownloadRef id="domEl" ref={domEl}>
         <CardStruct>
           <CardName>
             <div>{name}</div>
           </CardName>
           <CardImage>
-            <img
-              alt={description}
-              src="https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*"
-            />
+            <img alt={visualDescription} src={image} />
           </CardImage>
           <Description>
             <DescriptionText>

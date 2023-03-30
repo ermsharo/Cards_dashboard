@@ -38,9 +38,9 @@ function App() {
   return (
     <>
       <Helmet>
-        <title>Emilio Haro</title>
+        <title>TCG</title>
         <link rel="icon" href="https://i.stack.imgur.com/bJ120.png" />
-        <meta name="description" content="Emilio Haro portifolio" />
+        <meta name="description" content="TCG DASHBOARD" />
         <link
           rel="apple-touch-icon"
           href="https://i.stack.imgur.com/bJ120.png"

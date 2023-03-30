@@ -36,11 +36,11 @@ const HeaderOptionObj = (name: string, hash: string) => {
 };
 
 const HeaderOptions = [
-  HeaderOptionObj("New cards", "banner_home"),
-  HeaderOptionObj("Waiting cards", "about_me_home"),
-  HeaderOptionObj("Done cards", "projects_home"),
-  HeaderOptionObj("General status", "contact_home"),
-  HeaderOptionObj("ranking cards", "contact_home"),
+  HeaderOptionObj("New cards", ""),
+  // HeaderOptionObj("Waiting cards", "about_me_home"),
+  // HeaderOptionObj("Done cards", "projects_home"),
+  // HeaderOptionObj("General status", "contact_home"),
+  // HeaderOptionObj("ranking cards", "contact_home"),
 ];
 
 function Header() {
