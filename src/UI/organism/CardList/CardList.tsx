@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { CardsRequests } from "../../../services/CardsRequests";
+import Loading from "../../atoms/Loading";
 
 import Card from "../../molecules/Card";
 
 const DisplayPage = styled.div`
   display: grid;
 
-  grid-template-columns: 1fr ;
+  grid-template-columns: 1fr;
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
 `;
@@ -18,7 +19,6 @@ const Page = styled.div`
 `;
 
 const DisplayCard = styled.div`
-
   width: 35%;
   margin: auto;
 `;
@@ -81,15 +81,28 @@ export const IconButton = styled.button`
 `;
 
 function CardList({}: CardListProps) {
-  const [data, error, loading] = CardsRequests();
+  const [cardObj, setCardObj] = useState<any>(null);
+
+  const [data, error, loading] = CardsRequests(cardObj);
 
   if (error) {
     return <div>error</div>;
   }
   if (data["new_card"] !== undefined) {
-    const { NAME, BAD_IMAGE, TYPE, VISUAL_DESCRIPTION, DESCRIPTION, ATK, DEF } =
-      data["new_card"];
+    const {
+      NAME,
+      BAD_IMAGE,
+      TYPE,
+      VISUAL_DESCRIPTION,
+      DESCRIPTION,
+      ATK,
+      DEF,
+      PAGE_ID,
+    } = data["new_card"];
 
+    const generateObj = (pageId: string, status: string) => {
+      return { page_id: pageId, status: status };
+    };
     return (
       <Page>
         <PageTitle>New cards</PageTitle>
@@ -105,8 +118,20 @@ function CardList({}: CardListProps) {
               def={DEF}
             />
             <IconButtonLine>
-              <IconButton>Save</IconButton>
-              <IconButton>Delete</IconButton>
+              <IconButton
+                onClick={() => {
+                  setCardObj(generateObj(PAGE_ID, "SAVED"));
+                }}
+              >
+                Save
+              </IconButton>
+              <IconButton
+                onClick={() => {
+                  setCardObj(generateObj(PAGE_ID, "DELETED"));
+                }}
+              >
+                Delete
+              </IconButton>
             </IconButtonLine>
           </DisplayCard>
         </DisplayPage>
@@ -114,7 +139,14 @@ function CardList({}: CardListProps) {
     );
   }
 
-  return <div>loading</div>;
+  return (
+    <Page>
+      <PageTitle>New cards</PageTitle>
+      <DisplayPage>
+        <Loading />
+      </DisplayPage>
+    </Page>
+  );
 }
 
 export default CardList;
