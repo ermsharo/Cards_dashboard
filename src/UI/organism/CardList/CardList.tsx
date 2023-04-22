@@ -1,8 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { CardsRequests } from "../../../services/CardsRequests";
-import Loading from "../../atoms/Loading";
 
+// import { AppState } from "../../../redux/store";
+// import { CardsRequests } from "../../../services/CardsRequests";
+import useAxios from "../../../services/CardsRequests";
+import Loading from "../../atoms/Loading";
 import Card from "../../molecules/Card";
 
 const DisplayPage = styled.div`
@@ -13,14 +18,17 @@ const DisplayPage = styled.div`
   grid-row-gap: 1rem;
 `;
 const Page = styled.div`
-  padding-top: 6rem;
+
   width: 60vw;
   margin: auto;
 `;
 
 const DisplayCard = styled.div`
-  width: 35%;
-  margin: auto;
+display: inline-block;
+max-height: 60vh;
+width: 45vh; 
+margin: auto; 
+
 `;
 
 const PageTitle = styled.div`
@@ -80,73 +88,158 @@ export const IconButton = styled.button`
   }
 `;
 
-function CardList({}: CardListProps) {
-  const [cardObj, setCardObj] = useState<any>(null);
+interface CardData {
+  ATK: {
+    page_id: string;
+    property_type: string;
+    property_value: string;
+  };
+  CATEGORY: {
+    page_id: string;
+    property_type: string;
+    property_value: string;
+  };
+  IA_MODEL: {
+    page_id: string;
+    property_type: string;
+    property_value: string;
+  };
+  VISUAL_DESCRIPTION: {
+    page_id: string;
+    property_type: string;
+    property_value: string;
+  };
+  TYPE: {
+    page_id: string;
+    property_type: string;
+    property_value: string;
+  };
+  CLASS: {
+    page_id: string;
+    property_type: string;
+    property_value: string;
+  };
+  EFFECT: {
+    page_id: string;
+    property_type: string;
+    property_value: string;
+  };
+  BAD_IMAGE: {
+    page_id: string;
+    property_type: string;
+    property_value: string;
+  };
+  GOOD_IMAGE: {
+    page_id: string;
+    property_type: string;
+    property_value: string;
+  };
+  ID: {
+    page_id: string;
+    property_type: string;
+    property_value: string;
+  };
+  "Created time": {
+    page_id: string;
+    property_type: string;
+    property_value: null;
+  };
+  DESCRIPTION: {
+    page_id: string;
+    property_type: string;
+    property_value: string;
+  };
+  STATUS: {
+    page_id: string;
+    property_type: string;
+    property_value: string;
+  };
+  DEF: {
+    page_id: string;
+    property_type: string;
+    property_value: string;
+  };
+  NAME: {
+    page_id: string;
+    property_type: string;
+    property_value: string;
+  };
+}
 
-  const [data, error, loading] = CardsRequests(cardObj);
+function CardList({}: CardListProps) {
+  const { data, error, isLoading, refetch } = useAxios<any>({
+    url: `http://localhost:5000/TCG/new-card`,
+  });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   if (error) {
-    return <div>error</div>;
+    return <div>Error: {error.message}</div>;
   }
-  if (data["new_card"] !== undefined) {
-    const {
-      NAME,
-      BAD_IMAGE,
-      TYPE,
-      VISUAL_DESCRIPTION,
-      DESCRIPTION,
-      ATK,
-      DEF,
-      PAGE_ID,
-    } = data["new_card"];
 
-    const generateObj = (pageId: string, status: string) => {
-      return { page_id: pageId, status: status };
-    };
+  const handleSubmit = (): void => {
+  
+    refetch(); // trigger a refetch of the data
+  };
+
+  if (data != null) {
+    const {
+      ATK,
+      CATEGORY,
+      IA_MODEL,
+      VISUAL_DESCRIPTION,
+      TYPE,
+      CLASS,
+      EFFECT,
+      BAD_IMAGE,
+      GOOD_IMAGE,
+      ID,
+      DESCRIPTION,
+      STATUS,
+      DEF,
+      NAME,
+    } = data;
+
+  
     return (
       <Page>
-        <PageTitle>New cards</PageTitle>
+        <PageTitle>Triagem</PageTitle>
         <DisplayPage>
           <DisplayCard>
             <Card
-              name={NAME}
-              image={BAD_IMAGE}
-              type={TYPE}
-              visualDescription={VISUAL_DESCRIPTION}
-              description={DESCRIPTION}
-              atk={ATK}
-              def={DEF}
-            />
+                name={NAME.property_value}
+                image={BAD_IMAGE.property_value}
+                type={TYPE.property_value}
+                visualDescription={VISUAL_DESCRIPTION.property_value}
+                description={DESCRIPTION.property_value}
+                atk={ATK.property_value}
+                def={DEF.property_value}
+              />
             <IconButtonLine>
               <IconButton
-                onClick={() => {
-                  setCardObj(generateObj(PAGE_ID, "SAVED"));
-                }}
-              >
-                Save
-              </IconButton>
-              <IconButton
-                onClick={() => {
-                  setCardObj(generateObj(PAGE_ID, "DELETED"));
-                }}
-              >
-                Delete
-              </IconButton>
+                  onClick={() => {
+                    refetch();
+                  }}
+                >
+                  Save
+                </IconButton>
+                <IconButton
+                  onClick={() => {
+                    // setCardObj(generateObj(PAGE_ID, "DELETED"));
+                  }}
+                >
+                  Delete
+                </IconButton>
             </IconButtonLine>
           </DisplayCard>
         </DisplayPage>
       </Page>
     );
-  }
 
-  return (
-    <Page>
-      <PageTitle>New cards</PageTitle>
-      <DisplayPage>
-        <Loading />
-      </DisplayPage>
-    </Page>
-  );
 }
 
+return(<>varios nadas</>)
+}
 export default CardList;

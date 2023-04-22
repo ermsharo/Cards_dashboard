@@ -1,84 +1,47 @@
-import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
+import { useState, useEffect } from 'react';
+import axios, { AxiosResponse, AxiosError } from 'axios';
 
-export const CardsRequests = (obj: any) => {
-  const [data, setData] = useState<any>([]);
-  const [error, setError] = useState<boolean | String>(false);
-  const [loading, setLoading] = useState<boolean>(false);
+interface UseAxiosProps<T> {
+  url: string;
+}
 
-  const updateCardStatus = useCallback(async () => {
-    setLoading(true);
-    if (obj) {
-      let data = JSON.stringify(obj);
+interface UseAxiosState<T> {
+  data: T | null;
+  error: AxiosError<T> | null;
+  isLoading: boolean;
+  refetch: () => void;
+}
 
-      console.log("obj here", obj);
-      const config = {
-        method: "post",
-        url: "http://localhost:5000/TCG/new",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: data,
-      };
-
-      await axios(config)
-        .then(function (response) {
-          console.log("response: " + response);
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
-    }
-    setLoading(false);
-  }, [obj]);
+const useAxios = <T>({ url }: UseAxiosProps<T>): UseAxiosState<T> => {
+  const [data, setData] = useState<T | null>(null);
+  const [error, setError] = useState<AxiosError<T> | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const fetchData = async (): Promise<void> => {
-    setLoading(true);
-    setError(false);
+    setIsLoading(true);
     try {
-      const response = await axios.get<any>(`http://localhost:5000/TCG/new`);
-      console.log("response ->", response.data);
+      const response: AxiosResponse<T> = await axios.get(url);
       setData(response.data);
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error("Axios Error with Message: " + error.message);
-        setError(true);
-      }
-      setLoading(false);
-    } finally {
-      setLoading(false);
+      setIsLoading(false);
+    } catch (error: unknown) {
+      setError(error as AxiosError<T>);
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [url]);
+
+  const refetch = (): void => {
+    fetchData();
+  };
 
   useEffect(() => {
-    updateCardStatus();
-    fetchData();
-  }, [obj]);
+    setIsLoading(true);
+  }, [url]);
 
-  return [data, error, loading] as const;
+  return { data, error, isLoading, refetch };
 };
 
-// const updateCardStatus = async (obj: any) => {
-//   let data = JSON.stringify({
-//     obj,
-//   });
-
-//   const config = {
-//     method: "post",
-//     url: "http://localhost:5000/TCG/new",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     data: data,
-//   };
-
-//   await axios(config)
-//     .then(function (response) {})
-//     .catch(function (error) {
-//       console.error(error);
-//     });
-// };
+export default useAxios;
