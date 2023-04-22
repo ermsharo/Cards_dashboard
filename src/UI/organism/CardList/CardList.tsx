@@ -18,13 +18,17 @@ const DisplayPage = styled.div`
   grid-row-gap: 1rem;
 `;
 const Page = styled.div`
-  padding-top: 6rem;
+
   width: 60vw;
   margin: auto;
 `;
 
 const DisplayCard = styled.div`
-  max-height: ;
+display: inline-block;
+max-height: 60vh;
+width: 45vh; 
+margin: auto; 
+
 `;
 
 const PageTitle = styled.div`
@@ -163,8 +167,8 @@ interface CardData {
 }
 
 function CardList({}: CardListProps) {
-  const { data, error, isLoading } = useAxios<CardData>({
-    url: "http://localhost:5000/TCG/new-card",
+  const { data, error, isLoading, refetch } = useAxios<any>({
+    url: `http://localhost:5000/TCG/new-card`,
   });
 
   if (isLoading) {
@@ -175,7 +179,10 @@ function CardList({}: CardListProps) {
     return <div>Error: {error.message}</div>;
   }
 
-  console.log("data", data);
+  const handleSubmit = (): void => {
+  
+    refetch(); // trigger a refetch of the data
+  };
 
   if (data != null) {
     const {
@@ -195,43 +202,44 @@ function CardList({}: CardListProps) {
       NAME,
     } = data;
 
+  
     return (
       <Page>
         <PageTitle>Triagem</PageTitle>
         <DisplayPage>
           <DisplayCard>
             <Card
-              name={NAME.property_value}
-              image={BAD_IMAGE.property_value}
-              type={TYPE.property_value}
-              visualDescription={VISUAL_DESCRIPTION.property_value}
-              description={DESCRIPTION.property_value}
-              atk={ATK.property_value}
-              def={DEF.property_value}
-            />
+                name={NAME.property_value}
+                image={BAD_IMAGE.property_value}
+                type={TYPE.property_value}
+                visualDescription={VISUAL_DESCRIPTION.property_value}
+                description={DESCRIPTION.property_value}
+                atk={ATK.property_value}
+                def={DEF.property_value}
+              />
             <IconButtonLine>
-              {/* <IconButton
+              <IconButton
                   onClick={() => {
-                    setCardObj(generateObj(PAGE_ID, "SAVED"));
+                    refetch();
                   }}
                 >
                   Save
                 </IconButton>
                 <IconButton
                   onClick={() => {
-                    setCardObj(generateObj(PAGE_ID, "DELETED"));
+                    // setCardObj(generateObj(PAGE_ID, "DELETED"));
                   }}
                 >
                   Delete
-                </IconButton> */}
+                </IconButton>
             </IconButtonLine>
           </DisplayCard>
         </DisplayPage>
       </Page>
     );
-  } else {
-    return <div>Loading...</div>;
-  }
+
 }
 
+return(<>varios nadas</>)
+}
 export default CardList;
