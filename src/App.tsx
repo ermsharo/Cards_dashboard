@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet";
+import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import styled from "styled-components";
 
@@ -19,11 +20,12 @@ function App() {
       element: <Home />,
       errorElement: <ErrorPage />,
     },
-
   ]);
 
   return (
-<>   <Helmet>
+    <>
+      {" "}
+      <Helmet>
         <title>TCG</title>
         <link rel="icon" href="https://i.stack.imgur.com/bJ120.png" />
         <meta name="description" content="TCG DASHBOARD" />
@@ -36,11 +38,9 @@ function App() {
         {" "}
         <RouterProvider router={router} />
       </ProjectPage>
-
       <Footer />
-      <GlobalStyle /></>
-   
-
+      <GlobalStyle />
+    </>
   );
 }
 
