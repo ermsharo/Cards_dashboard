@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 // import { AppState } from "../../../redux/store";
 // import { CardsRequests } from "../../../services/CardsRequests";
-import useAxios from "../../../services/CardsRequests";
+import {useAxios, useAxiosPost} from "../../../services/CardsRequests";
 import Loading from "../../atoms/Loading";
 import Card from "../../molecules/Card";
 
@@ -167,10 +167,11 @@ interface CardData {
 }
 
 function CardList({}: CardListProps) {
+  const [postData, setPostData] = useState({});
   const { data, error, isLoading, refetch } = useAxios<any>({
-    url: `http://localhost:5000/TCG/new-card`,
+    url: `https://tcg-server.onrender.com/TCG/new-card`,
   });
-
+  const { isLoading: isPostDataLoading, postData: submitPostData } = useAxiosPost({ url: 'https://tcg-server.onrender.com/TCG/new-card' , data: postData  });
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -179,10 +180,8 @@ function CardList({}: CardListProps) {
     return <div>Error: {error.message}</div>;
   }
 
-  const handleSubmit = (): void => {
+
   
-    refetch(); // trigger a refetch of the data
-  };
 
   if (data != null) {
     const {
@@ -202,6 +201,16 @@ function CardList({}: CardListProps) {
       NAME,
     } = data;
 
+
+    const deleteCard = (cardPageId : string, cardName: string, cardId:string) =>{
+      console.log("page id" , cardPageId); 
+      submitPostData({"status": "deleted", "page_id": cardPageId, "card_name":cardName, "card_id":cardId });
+      refetch();
+    }
+    const sendCardtoEdit = (cardPageId : string, cardName:string,cardId:string) =>{
+      submitPostData({"status": "editing", "page_id": cardPageId, "card_name":cardName, "card_id":cardId });
+      refetch();
+    }
   
     return (
       <Page>
@@ -220,14 +229,14 @@ function CardList({}: CardListProps) {
             <IconButtonLine>
               <IconButton
                   onClick={() => {
-                    refetch();
+                    sendCardtoEdit(ID.page_id ,NAME.property_value,ID.property_value); 
                   }}
                 >
                   Save
                 </IconButton>
                 <IconButton
                   onClick={() => {
-                    // setCardObj(generateObj(PAGE_ID, "DELETED"));
+                    deleteCard(ID.page_id,NAME.property_value,ID.property_value);
                   }}
                 >
                   Delete
@@ -240,6 +249,6 @@ function CardList({}: CardListProps) {
 
 }
 
-return(<>varios nadas</>)
+return <div>Loading...</div>;
 }
 export default CardList;

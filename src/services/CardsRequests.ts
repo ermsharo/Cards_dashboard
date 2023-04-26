@@ -3,6 +3,7 @@ import axios, { AxiosResponse, AxiosError } from 'axios';
 
 interface UseAxiosProps<T> {
   url: string;
+  data?: T;
 }
 
 interface UseAxiosState<T> {
@@ -12,7 +13,16 @@ interface UseAxiosState<T> {
   refetch: () => void;
 }
 
-const useAxios = <T>({ url }: UseAxiosProps<T>): UseAxiosState<T> => {
+
+interface UsePostState<T> {
+  data: T | null;
+  error: AxiosError<T> | null;
+  isLoading: boolean;
+  isSuccess: boolean;
+  postData: (payload: T) => Promise<void>;
+}
+
+export const useAxios = <T>({ url }: UseAxiosProps<T>): UseAxiosState<T> => {
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<AxiosError<T> | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -44,4 +54,31 @@ const useAxios = <T>({ url }: UseAxiosProps<T>): UseAxiosState<T> => {
   return { data, error, isLoading, refetch };
 };
 
-export default useAxios;
+
+export const useAxiosPost = <T>({ url }: UseAxiosProps<T>): UsePostState<T> => {
+  const [data, setData] = useState<T | null>(null);
+  const [error, setError] = useState<AxiosError<T> | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
+
+  const postData = async (payload: T): Promise<void> => {
+    setIsLoading(true);
+    setIsSuccess(false);
+
+    try {
+      const response: AxiosResponse<T> = await axios.post(url, payload);
+      setData(response.data);
+      setIsLoading(false);
+      setIsSuccess(true);
+    } catch (error: unknown) {
+      setError(error as AxiosError<T>);
+      setIsLoading(false);
+      setIsSuccess(false);
+    }
+  };
+
+  return { data, error, isLoading, isSuccess, postData };
+};
+
+
+
