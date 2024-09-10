@@ -1,19 +1,22 @@
 import { useState } from "react";
 import styled from "styled-components";
+import axios from "axios"; // Make sure to import axios
 import CardsStructure from "../components/CardStructure";
 
 const PageBox = styled.div`
-  width: 75vw;
+  width: 70vw;
   margin: auto;
 `;
 
 const PageEditor = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem;
 `;
 
-const CardBox = styled.div``;
+const CardBox = styled.div`
+  padding-left: 25%;
+`;
 
 const PropsBox = styled.div`
   form {
@@ -21,33 +24,67 @@ const PropsBox = styled.div`
     gap: 1rem;
     flex-direction: column;
     font-size: 1rem;
+    padding: 1rem;
   }
 
   input {
     width: 100%;
     padding: 0.5rem;
-    border: none; 
+    border: none;
     font-size: 1rem;
   }
 `;
 
 const Label = styled.div``;
 
-function CardsPropsPage({ card }) {
+function CardsPropsPage({ card, fetchCards, currentPage }) {
   const [name, setName] = useState(card.NAME);
   const [category, setCategory] = useState(card.CATEGORY);
   const [price, setPrice] = useState(card.PRICE || 4);
   const [atk, setAtk] = useState(card.ATK);
   const [def, setDef] = useState(card.DEF);
 
+  const handleEditCard = async (cardId, updatedData) => {
+    try {
+      await axios.put(`http://127.0.0.1:7000/cards/${cardId}`, updatedData);
+      fetchCards(currentPage); // Refresh cards after edit
+    } catch (error) {
+      console.error("Error editing card:", error);
+    }
+  };
+
+  const handleDeleteCard = async (cardId) => {
+    try {
+      await axios.delete(`http://127.0.0.1:7000/cards/${cardId}`);
+      fetchCards(currentPage); // Refresh cards after delete
+    } catch (error) {
+      console.error("Error deleting card:", error);
+    }
+  };
+
+  const handleApproveCard = async (cardId) => {
+    try {
+      await axios.post(`http://127.0.0.1:7000/cards/${cardId}/approve`);
+      fetchCards(currentPage); // Refresh cards after approval
+    } catch (error) {
+      console.error("Error approving card:", error);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Name: ${name}\nCategory: ${category}\nPrice: ${price}\nATK: ${atk}\nDEF: ${def}`);
+    const updatedCardData = {
+      NAME: name,
+      CATEGORY: category,
+      PRICE: price,
+      ATK: atk,
+      DEF: def
+    };
+    handleEditCard(card.id, updatedCardData); // Call the edit function with updated data
   };
 
   return (
     <PageBox>
-      <h1>Cards Props Page</h1>
       <PageEditor>
         <CardBox>
           <CardsStructure card={card} name={name} category={category} price={price} atk={atk} def={def} />
@@ -108,11 +145,14 @@ function CardsPropsPage({ card }) {
                   placeholder="Enter DEF value"
                 />
               </div>
-  
-              <button>Edit</button>
-              <button>Aprove</button>
-              <button>Delete</button>
+
+              <button type="submit">Edit</button>
             </form>
+            <button onClick={() => handleApproveCard(card.id)}>Approve</button>
+            <button onClick={(e) => {
+              e.preventDefault(); // Prevent form submission
+              handleDeleteCard(card.id);
+            }}>Delete</button>
           </div>
         </PropsBox>
       </PageEditor>

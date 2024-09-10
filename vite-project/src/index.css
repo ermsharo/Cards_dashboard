@@ -7,10 +7,17 @@
   font-weight: 400;
 
 
-  background-color: #ebdddd;
-
+  
  
   font-family: "Poppins", sans-serif;
   font-weight: 500;
 }
 
+body{
+  padding: 0px;
+  border:0px;
+  margin:0px;
+  background-image: linear-gradient(#f7f7f7 3.5px, transparent 3.5px), linear-gradient(to right, #f7f7f7 3.5px, transparent 3.5px);
+  background-size: 75px 75px;
+  background-color: #fafafa;
+}

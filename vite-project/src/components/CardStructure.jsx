@@ -99,6 +99,7 @@ const CardBoxBackground = styled.div`
     width: 350px;
     height: 200px;
     object-fit: cover;
+    object-position: top; /* Crop from the top */
   }
 `;
 
@@ -113,7 +114,7 @@ const CardBoxLayout = styled.div`
   img {
     width: 350px;
     filter: drop-shadow(rgba(99, 99, 99, 1.2) 2px 2px 8px 2px);
-    box-shadow: 
+
   }
 `;
 
