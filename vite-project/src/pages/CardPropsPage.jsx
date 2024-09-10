@@ -20,33 +20,37 @@ const PropsBox = styled.div`
     display: flex;
     gap: 1rem;
     flex-direction: column;
-    font-size: 2rem;
+    font-size: 1rem;
   }
 
   input {
     width: 100%;
     padding: 0.5rem;
+    border: none; 
+    font-size: 1rem;
   }
 `;
 
 const Label = styled.div``;
 
-function CardsPropsPage({card}) {
-  const [count, setCount] = useState(0);
-  const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
-  const [option, setOption] = useState("");
+function CardsPropsPage({ card }) {
+  const [name, setName] = useState(card.NAME);
+  const [category, setCategory] = useState(card.CATEGORY);
+  const [price, setPrice] = useState(card.PRICE || 4);
+  const [atk, setAtk] = useState(card.ATK);
+  const [def, setDef] = useState(card.DEF);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Name: ${name}\nMessage: ${message}\nSelected Option: ${option}`);
+    alert(`Name: ${name}\nCategory: ${category}\nPrice: ${price}\nATK: ${atk}\nDEF: ${def}`);
   };
+
   return (
     <PageBox>
-      <h1>Cards props page</h1>
+      <h1>Cards Props Page</h1>
       <PageEditor>
         <CardBox>
-          <CardsStructure  card={card} />
+          <CardsStructure card={card} name={name} category={category} price={price} atk={atk} def={def} />
         </CardBox>
         <PropsBox>
           <div>
@@ -58,35 +62,56 @@ function CardsPropsPage({card}) {
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Enter your name"
+                  placeholder="Enter card name"
                 />
               </div>
-
               <div>
-                <Label htmlFor="message">Message:</Label>
-                <textarea
-                  id="message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Enter your message"
+                <Label htmlFor="category">Category:</Label>
+                <input
+                  type="text"
+                  id="category"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  placeholder="Enter card category"
                 />
               </div>
-
               <div>
-                <Label htmlFor="option">Choose an option:</Label>
-                <select
-                  id="option"
-                  value={option}
-                  onChange={(e) => setOption(e.target.value)}
-                >
-                  <option value="">--Select an option--</option>
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
-                </select>
+                <Label htmlFor="price">Price:</Label>
+                <input
+                  type="number"
+                  id="price"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                  min="0"
+                  placeholder="Enter card price"
+                />
               </div>
-
-              <button type="submit">Submit</button>
+              <div>
+                <Label htmlFor="atk">ATK:</Label>
+                <input
+                  type="number"
+                  id="atk"
+                  value={atk}
+                  onChange={(e) => setAtk(e.target.value)}
+                  min="0"
+                  placeholder="Enter ATK value"
+                />
+              </div>
+              <div>
+                <Label htmlFor="def">DEF:</Label>
+                <input
+                  type="number"
+                  id="def"
+                  value={def}
+                  onChange={(e) => setDef(e.target.value)}
+                  min="0"
+                  placeholder="Enter DEF value"
+                />
+              </div>
+  
+              <button>Edit</button>
+              <button>Aprove</button>
+              <button>Delete</button>
             </form>
           </div>
         </PropsBox>

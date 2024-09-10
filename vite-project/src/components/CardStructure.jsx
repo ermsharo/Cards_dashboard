@@ -112,6 +112,8 @@ const CardBoxLayout = styled.div`
   z-index: 2; /* Lowest z-index */
   img {
     width: 350px;
+    filter: drop-shadow(rgba(99, 99, 99, 1.2) 2px 2px 8px 2px);
+    box-shadow: 
   }
 `;
 
@@ -216,7 +218,7 @@ function transformToThumbnailLink(downloadUrl, size = "w1000") {
   return null;
 }
 
-function CardsStructure({ card }) {
+function CardsStructure({ card, name,category,price, atk, def}) {
   console.log("card", card);
   return (
     <CardBoxContainer>
@@ -231,11 +233,11 @@ function CardsStructure({ card }) {
       <CardBoxLayout>
         <img src={cardImage}></img>
       </CardBoxLayout>
-      <CardBoxInfoTitle>{card.NAME}</CardBoxInfoTitle>
-      <CardBoxInfoCategory>{card.CATEGORY}</CardBoxInfoCategory>
-      <CardBoxInfoPrice>4</CardBoxInfoPrice>
-      <CardBoxInfoATK>{card.ATK}</CardBoxInfoATK>
-      <CardBoxInfoDEF>{card.DEF}</CardBoxInfoDEF>
+      <CardBoxInfoTitle>{name}</CardBoxInfoTitle>
+      <CardBoxInfoCategory>{category}</CardBoxInfoCategory>
+      <CardBoxInfoPrice>{price}</CardBoxInfoPrice>
+      <CardBoxInfoATK>{atk}</CardBoxInfoATK>
+      <CardBoxInfoDEF>{def}</CardBoxInfoDEF>
     </CardBoxContainer>
   );
   //     <CardLayers>
