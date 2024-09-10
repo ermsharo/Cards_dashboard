@@ -104,22 +104,38 @@ const CardInfoProps = styled.div`
 
 
 `
-function CardsStructure() {
 
+function transformToThumbnailLink(downloadUrl, size = 'w1000') {
+  // Check if the input matches the expected format
+  const match = downloadUrl.match(/id=([\w-]+)/);
 
+  if (match && match[1]) {
+      // Extract the file ID from the original URL
+      const fileId = match[1];
+
+      // Create the new thumbnail link with the desired size
+      return `https://drive.google.com/thumbnail?id=${fileId}&sz=${size}`;
+  }
+
+  // If the input URL is not valid, return null or an error message
+  return null;
+}
+
+function CardsStructure({card}) {
+
+console.log("card", card)
   return (
 
     <CardLayers>
       <BackLayer>
-
       <img src = {cardImage}></img>
       </BackLayer>
       <FrontLayer>
-<CardTitle> Blue eyes dragon</CardTitle>
-<CardImage><img src = "https://pics.craiyon.com/2023-10-25/5be47098b5b549559393c8f994c659c0.webp"></img></CardImage>
-<CardDescription>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</CardDescription>
+<CardTitle> {card.NAME}</CardTitle>
+<CardImage><img src = {transformToThumbnailLink(card?.CARD_IMAGES?.[0]['image_url'])}></img></CardImage>
+<CardDescription>{card.DESCRIPTION}</CardDescription>
 <CardInfo>
-<div>  </div> <CardInfoProps> 10 </CardInfoProps> <div></div> <CardInfoProps>4</CardInfoProps><div></div>
+<div>  </div> <CardInfoProps> {card.ATK} </CardInfoProps> <div></div> <CardInfoProps>{card.DEF}</CardInfoProps><div></div>
 </CardInfo>
 
 
